@@ -4,7 +4,8 @@ const path = require('path');
 const app = express();
 
 app.use(express.json());
-app.use(express.static('public'));
+app.use(express.static(__dirname)); // Palvelee juuressa olevat tiedostot (index.html)
+app.use('/public', express.static(path.join(__dirname, 'public'))); // Palvelee public-kansion sisällön
 
 // Lataa data JSON-tiedostosta
 const loadData = async () => {
